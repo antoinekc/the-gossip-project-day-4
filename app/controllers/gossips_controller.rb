@@ -15,23 +15,33 @@ class GossipsController < ApplicationController
   end
   
   def create
-    @gossip = Gossip.new(gossip_params)
     @gossip = Gossip.create(gossip_params)
     @gossip.user = User.find_by(id: session[:user_id])
-
     if @gossip.save
       flash[:success] = "Potin bien créé !"
       redirect_to root_path
-
-
-    #if @gossip.save
-    #  redirect_to gossips_path, notice: 'Gossip créé avec succès!'
-    #  flash[:success] = "C'EST UN SUCCES!BRAVO!" #pour afficher le bandeau alerte (Voir html new)
     else
       render :new
-      flash[:danger] = "C'EST FOIRE" #pour afficher le bandeau alerte (Voir html index)
     end
   end
+
+  # def create
+  #   #@gossip = Gossip.new(gossip_params)
+  #   @gossip = Gossip.create(gossip_params)
+  #   @gossip.user = User.find_by(id: session[:user_id])
+
+  #   if @gossip.save
+  #     flash[:success] = "Potin bien créé !"
+  #     redirect_to root_path
+
+  #   #if @gossip.save
+  #   #  redirect_to gossips_path, notice: 'Gossip créé avec succès!'
+  #   #  flash[:success] = "C'EST UN SUCCES!BRAVO!" #pour afficher le bandeau alerte (Voir html new)
+  #   else
+  #     render :new
+  #     flash[:danger] = "Ça n'a pas fonctionné" #pour afficher le bandeau alerte (Voir html index)
+  #   end
+  # end
 
   def edit
     @gossip = Gossip.find(params[:id])
@@ -58,6 +68,6 @@ class GossipsController < ApplicationController
   private
   
   def gossip_params
-    params.require(:gossip).permit(:title, :description, :user_id)
+    params.require(:gossip).permit(:title, :description)
   end
 end
