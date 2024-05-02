@@ -16,4 +16,5 @@ class User < ApplicationRecord
     presence: true
     has_many :comments
     has_many :gossips, through: :comments
+    has_secure_password
 end

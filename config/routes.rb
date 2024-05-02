@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :team, only: [:index]
   resources :contact, only: [:index]
   resources :welcome, only: [:show]
-  resources :user, only:[:show]
+  resources :user, only:[:show, :create, :new]
   resources :city, only:[:show]
   
   #get '/welcome/:first_name', to: "welcome#show", as: 'welcome'  #OLD PATH BEFORE CRUD & REST

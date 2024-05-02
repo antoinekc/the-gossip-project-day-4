@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css', integrity: 'sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk', crossorigin: 'anonymous' %>
-    <%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js', integrity: 'sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI', crossorigin: 'anonymous' %>
-    <%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js', integrity: 'sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd', crossorigin: 'anonymous' %> 
+    <%= stylesheet_link_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css", integrity: "sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk", crossorigin: "anonymous" %>
+    <%= javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js", integrity: "sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI", crossorigin: "anonymous" %>
+    <%= javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js", integrity: "sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd", crossorigin: "anonymous" %> 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> <!--merci valentin! affichage du menu en dropdown-->
     <title>GossipsThp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,45 +17,45 @@
   <body>
   <header>
   <!--Header debut (The header is in app/view/layouts) This is a reminder for the futur Elias that already forgot everything. I would not write it on a real website!!-->
+  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to "The Gossip Project", root_path, class:"navbar-brand" %>
+  <%= link_to "The Gossip Project", root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%=link_to"contact",contact_index_path, class:"nav-link" %>
-      </li>
-      <li class="nav-item">
-      <%=link_to"team",team_index_path, class:"nav-link" %>
-      </li>
-      <li class="nav-item">
-      <%=link_to"Creer un Gossip", new_gossip_path, class:"nav-link" %>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Session
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%=link_to"Log-In", new_session_path, class:"dropdown-item" %>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-       
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+
+    <li class="nav-item active">
+    <%= link_to "New Gossip", new_gossip_path, class: "nav-link" %>
+    </li>
+  
+    <li class="nav-item active">
+    <%= link_to "Sign Up", new_user_path, class: "nav-link" %>
+    </li>
+    
+    <li class="nav-item active">
+    <%= link_to "Login", new_session_path, class: "nav-link" %>
+    </li>
+    
+    <li class="nav-item ">
+    <%= link_to "contact", contact_index_path, class: "nav-link" %>
+  </li>
     </ul>
+
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      <button class="btn btn-outline-danger my-2 my-sm-0">
+        <%= link_to "Log Out", session_path(session.id), data: { turbo_method: :delete } %>
+      </button>
+
+
+      </form>
   </div>
 </nav>
+
 <!-- Header fin navbar included-->
   </header>
     <%= yield %>

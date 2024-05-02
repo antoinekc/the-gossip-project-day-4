@@ -16,10 +16,17 @@ class GossipsController < ApplicationController
   
   def create
     @gossip = Gossip.new(gossip_params)
+    @gossip = Gossip.create(gossip_params)
+    @gossip.user = User.find_by(id: session[:user_id])
 
     if @gossip.save
-      redirect_to gossips_path, notice: 'Gossip créé avec succès!'
-      flash[:success] = "C'EST UN SUCCES!BRAVO!" #pour afficher le bandeau alerte (Voir html new)
+      flash[:success] = "Potin bien créé !"
+      redirect_to root_path
+
+
+    #if @gossip.save
+    #  redirect_to gossips_path, notice: 'Gossip créé avec succès!'
+    #  flash[:success] = "C'EST UN SUCCES!BRAVO!" #pour afficher le bandeau alerte (Voir html new)
     else
       render :new
       flash[:danger] = "C'EST FOIRE" #pour afficher le bandeau alerte (Voir html index)

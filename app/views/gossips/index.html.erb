@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>The Gossip Project</title>
-  </head>
-  <body>
-  <% if flash[:success] %>
+<head>
+  <title>The Gossip Project</title>
+</head>
+<body>
+<% if flash[:success] %>
   <div class="alert alert-success">
     <%= flash[:success] %>
   </div>
 <% end %>
+<% if flash[:danger] %>
+  <div class="alert alert-danger"> <!-- Fixed typo here -->
+    <%= flash[:danger] %>
+  </div>
+<% end %>
+
 <div class="jumbotron">
   <h1 class="display-4">Gossip Project</h1>
   <p class="lead">Ceci est une réplique du projet de Zuckerberg avant Facebook. C'est le même avec exactement 20 ans de retard.</p>
@@ -18,7 +24,8 @@
     <a class="btn btn-primary btn-lg" href="https://chat.openai.com/" role="button">Learn more</a>
   </p>
 </div>
-  <h1>The Gossip Project day3 v3</h1>
+
+<h1>The Gossip Project day3 v3</h1>
 <!-- Container for cards with increased top margin -->
 <div class="container mt-5">
   <div class="row">
@@ -28,9 +35,9 @@
           <div class="card-header">Gossip n°<%= gossip.id %></div>
           <div class="card-body">
             <h5 class="card-title"><%= gossip.title %></h5>
-            <p class="card-text"><i>Created by:</i> <%= link_to gossip.user.first_name, user_path(gossip.user)%></p>
-            <!--<p><a href="/gossip/<%=gossip.id%>" class="btn btn-dark">Voir le potin</a></p>-->
-            <p class="btn btn-light"><%= link_to "Learn More", gossip_path(gossip)%></p>
+            <p class="card-text"><i>Created by:</i> <%= link_to gossip.user.first_name, user_path(gossip.user) %></p>
+            <!--<p><a href="/gossip/<%= gossip.id %>" class="btn btn-dark">Voir le potin</a></p>-->
+            <p class="btn btn-light"><%= link_to "Learn More", gossip_path(gossip) %></p>
             <!-- You can add more content here if needed -->
           </div>
         </div>
